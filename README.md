@@ -1,6 +1,6 @@
 # Backend
 
-## Instalando Node.js v8.x:
+## Instalando Node.js v10.x:
 
 NOTA.- Debian Wheezy no soporta Node 10
 
