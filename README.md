@@ -59,3 +59,10 @@ Para más opciones de los endpoins puede revisar [Sequelize handler](https://www
 
 - En el archivo `api.js` puede agregar sus endpoins personalizados bajo la ruta `http://localhost:3000/api/[endpoint-personalizado]`
 
+## Agregando seeders
+
+Para agregar seeders lo puede hacer en la carpeta `seeders`, para esto se genera datos fakes con el módulo [casual](https://www.npmjs.com/package/casual), debe mantener el orden de los seeders de acuerdo a su esquema de base de datos.
+
+## Cambiar de gestor de base de datos
+
+Puede usar el archivo `config/config.sample.json` para configurar su conexión a otro gestor de base de datos como MySQL, PostgreSQL, MsSQL, Oracle; para esto renombre `config/config.sample.json` a `config/config.json` y coloque sus datos de conexión a su gestor de base de datos.
