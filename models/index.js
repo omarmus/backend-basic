@@ -1,7 +1,8 @@
 'use strict';
 
 const { ModelHandler } = require('sequelize-handlers');
-const apiRest = '/api-rest/';
+const associations = require('./_associations');
+const apiRest = '/model/';
 const util = require('../lib/util');
 const types = {
   'post': {
@@ -29,7 +30,7 @@ const types = {
 function filterModel (model) {
   let pos = model.indexOf('?');
   if (pos !== -1) {
-    console.log('cut', model.substring(0, pos));
+    // console.log('cut', model.substring(0, pos));
     return model.substring(0, pos);
   }
   return model;
@@ -37,15 +38,12 @@ function filterModel (model) {
 
 function init (app, sequelize) {
   // Cargando todos los modelos que se encuentran en la carpeta models y en sus subcarpetas
-  console.log('PATH', __dirname);
-  let models = util.loadModels(__dirname, sequelize, { exclude: ['index.js'] });
+  // console.log('PATH', __dirname);
+  let models = util.loadModels(__dirname, sequelize, { exclude: ['index.js', '_associations.js'] });
   // models = util.convertLinealObject(models);
 
-  const { empresas, usuarios } = models;
-
-  // Definiendo relaciones
-  empresas.hasMany(usuarios, { foreignKey: { name: 'id_empresa', allowNull: false } });
-  usuarios.belongsTo(empresas, { foreignKey: { name: 'id_empresa', allowNull: false } });
+  // Cargando asociaciones
+  associations(models);
 
   // Creando manejadores sequelize-handler para cada modelo
   let handlers = {};

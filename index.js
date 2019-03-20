@@ -5,12 +5,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const cors = require('cors');
+const path = require('path');
 const port = 3000;
 const api = require('./api');
 const hook = require('./lib/hook');
+const env = process.env.NODE_ENV || 'development';
+const config = require(path.join(__dirname, 'config/config.json'))[env];
 
 // Create the Sequelize instance
-const sequelize = new Sequelize('sqlite://examen.sqlite');
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 // Create the Express application
 const app = express();

@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 
 module.exports = function (sequelize) {
   // Define a Sequelize model
-  const Usuario = sequelize.define('usuarios', {
+  const User = sequelize.define('users', {
     id: {
       primaryKey: true,
       autoIncrement: true,
@@ -13,17 +13,29 @@ module.exports = function (sequelize) {
     username: {
       type: Sequelize.STRING
     },
+    password: {
+      type: Sequelize.STRING
+    },
     email: {
       type: Sequelize.STRING
     },
-    nombre: {
+    first_name: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    edad: {
-      type: Sequelize.INTEGER
+    last_name: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    created_at: {
+      type: Sequelize.DATE
+    },
+    updated_at: {
+      type: Sequelize.DATE
     }
+  }, {
+    timestamps: false
   });
 
-  return Usuario;
+  return User;
 };

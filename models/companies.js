@@ -4,20 +4,31 @@ const Sequelize = require('sequelize');
 
 module.exports = function (sequelize) {
   // Define a Sequelize model
-  const Empresa = sequelize.define('empresas', {
+  const Company = sequelize.define('companies', {
     id: {
       primaryKey: true,
       autoIncrement: true,
       type: Sequelize.INTEGER
     },
-    nombre: {
+    name: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    direccion: {
+    address: {
       type: Sequelize.STRING
+    },
+    phone: {
+      type: Sequelize.STRING
+    },
+    created_at: {
+      type: Sequelize.DATE
+    },
+    updated_at: {
+      type: Sequelize.DATE
     }
+  }, {
+    timestamps: false
   });
 
-  return Empresa;
+  return Company;
 };
