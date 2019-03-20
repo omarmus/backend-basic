@@ -37,7 +37,7 @@ curl -X GET \
 
 ````
 
-## Agregar modelos
+## Agregando modelos
 
 - Cuando crea un modelo en la carpeta models, este se cargará automáticamente y su api-rest estará disponible de manera automática, los enpoints disponibles son:
 
